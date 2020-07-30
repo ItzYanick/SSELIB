@@ -6,7 +6,7 @@ class Server {
         $this->event = $event;
     }
     public function sendEvent() {
-        echo $this->event->getData();
+        echo $this->event->getDataContent();
         ob_flush();
         flush();
     }
