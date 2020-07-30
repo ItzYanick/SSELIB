@@ -17,6 +17,7 @@ class Server {
         while (true) {
             $this->sendEvent();
             if (connection_aborted()) {
+                $this->event->executeStopMethod();
                 return;
             }
             sleep($interval);
