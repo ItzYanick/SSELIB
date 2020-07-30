@@ -21,7 +21,7 @@ class Server
     public function startServer($interval = 5)
     {
         while (true) {
-            sendEvent()
+            sendEvent();
 
             if (connection_aborted()) {
                 return;
