@@ -20,8 +20,8 @@ source.addEventListener('data', function(event) {
 ### Server example (PHP)
 
 ```PHP
-use ItzYanick\SSELIB\Event;
 use ItzYanick\SSELIB\Server;
+use ItzYanick\SSELIB\Event;
 
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
