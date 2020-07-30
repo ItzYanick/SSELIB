@@ -34,11 +34,10 @@ class Event {
             $eventType[] = sprintf('id: %s', $this->id);
         }
         if ($this->eventType !== '') {
-            $eventType[] = sprintf('eventType
-    : %s', $this->eventType);
+            $eventType[] = sprintf('event: %s', $this->eventType);
         }
         if ($this->dataContent !== '') {
-            $eventType[] = sprintf('dataContent: %s', $this->dataContent);
+            $eventType[] = sprintf('data: %s', $this->dataContent);
         }
         return implode("\n", $eventType) . "\n\n";
     }
