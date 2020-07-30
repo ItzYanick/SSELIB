@@ -6,7 +6,7 @@ class Event {
     protected $dataContent;
     protected $callbackFunction;
     protected $callbackVarsArray;
-    public function __construct(callable$callbackFunction, $eventType = 'dataContent', $callbackVarsArray = '') {
+    public function __construct(callable$callbackFunction, $eventType = 'data', $callbackVarsArray = '') {
         $this->callbackFunction = $callbackFunction;
         $this->eventType = $eventType;
         if (isset($callbackVarsArray) && is_array($callbackVarsArray)) {
@@ -21,7 +21,7 @@ class Event {
         }
         if ($returnValue === false) {
             $this->id = '';
-            $this->dataContent = '';
+            $this->dataContent = 'no data';
         } else {
             $this->id = uniqid('', true);
             $this->dataContent = $returnValue;
