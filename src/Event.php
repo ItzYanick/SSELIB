@@ -18,7 +18,7 @@ class Event {
         if (isset($this->$callbackVar)) {
             $returnValue = call_user_func_array($this->callbackFunction, $callbackVar);
         } else {
-            $returnValue = call_user_func($this->callbackFunction);
+            $returnValue = call_user_func($this->callbackFunction, $callbackVar);
         }
         if ($returnValue === false) {
             $this->id = '';
