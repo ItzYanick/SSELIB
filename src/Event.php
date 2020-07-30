@@ -16,7 +16,7 @@ class Event {
     }
     public function getDataContent() {
         if (isset($this->$callbackVar)) {
-            $returnValue = call_user_func_array($this->callbackFunction, $callbackVar);
+            $returnValue = call_user_func_array($this->callbackFunction, $this->$callbackVar);
         } else {
             $returnValue = call_user_func($this->callbackFunction, $callbackVar);
         }
