@@ -6,9 +6,12 @@ class Server {
         $this->event = $event;
     }
     public function sendEvent() {
-        echo $this->event->getDataContent();
-        ob_flush();
-        flush();
+        $data = $this->event->getDataContent();
+        if($data['id'] !== '') {
+            echo $data;
+            ob_flush();
+            flush();
+        }
     }
     public function startServer($interval = 5) {
         while (true) {
