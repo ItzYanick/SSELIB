@@ -13,7 +13,7 @@ class Event {
             $this->callbackVarsArray = $callbackVarsArray;
         }
     }
-    public function getdataContent() {
+    public function getDataContent() {
         if (isset($this->$callbackVarsArray)) {
             $returnValue = call_user_func_array($this->callbackFunction, $callbackVarsArray);
         } else {
