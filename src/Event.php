@@ -14,8 +14,8 @@ class Event
     {
         $this->callbackFunction = $callbackFunction;
         $this->event = $event;
-        if(is_array($callbackVarsArray)) {
-            $this->vars = $callbackVarsArray;
+        if(isset($callbackVarsArray) && is_array($callbackVarsArray)) {
+            $this->callbackVarsArray = $callbackVarsArray;
         }
     }
 
