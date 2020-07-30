@@ -10,17 +10,13 @@ class Event
     protected $callbackFunction;
     protected $callbackVarsArray;
 
-    public function __construct(callable $callbackFunction, $event = '')
+    public function __construct(callable $callbackFunction, $event = 'data', $callbackVarsArray = '')
     {
         $this->callbackFunction = $callbackFunction;
         $this->event = $event;
-    }
-
-    public function __construct(callable $callbackFunction, $event = '', $callbackVarsArray)
-    {
-        $this->callbackFunction = $callbackFunction;
-        $this->event = $event;
-        $this->vars = $callbackVarsArray;
+        if(is_array($callbackVarsArray)) {
+            $this->vars = $callbackVarsArray;
+        }
     }
 
     public function getData()
