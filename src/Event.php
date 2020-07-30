@@ -5,17 +5,18 @@ class Event {
     protected $eventType;
     protected $dataContent;
     protected $callbackFunction;
-    protected $callbackVarsArray;
-    public function __construct(callable$callbackFunction, $eventType = 'data', $callbackVarsArray = '') {
+    protected $callbackVar;
+    protected $stopMethod;
+
+    public function __construct(callable $callbackFunction, $eventType, $callbackVar, callable $stopMethod) {
         $this->callbackFunction = $callbackFunction;
         $this->eventType = $eventType;
-        if (isset($callbackVarsArray) && is_array($callbackVarsArray)) {
-            $this->callbackVarsArray = $callbackVarsArray;
-        }
+        $this->callbackVar = $callbackVar;
+        $this->stopMethod = $stopMethod;
     }
     public function getDataContent() {
-        if (isset($this->$callbackVarsArray)) {
-            $returnValue = call_user_func_array($this->callbackFunction, $callbackVarsArray);
+        if (isset($this->$callbackVar)) {
+            $returnValue = call_user_func_array($this->callbackFunction, $callbackVar);
         } else {
             $returnValue = call_user_func($this->callbackFunction);
         }
@@ -40,5 +41,8 @@ class Event {
             $eventType[] = sprintf('data: %s', $this->dataContent);
         }
         return implode("\n", $eventType) . "\n\n";
+    }
+    public function executeStopMethod() {
+        call_user_func($this->stopMethod);
     }
 }
