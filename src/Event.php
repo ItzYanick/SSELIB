@@ -27,7 +27,7 @@ class Event
         }
         if ($returnValue === false) {
             $this->id = '';
-            $this->dataContent = 'no data';
+            $this->dataContent = ['no data', 'no data'];
         } else {
             $this->id = uniqid('', true);
             $this->dataContent = $returnValue;
