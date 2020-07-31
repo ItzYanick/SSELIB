@@ -7,8 +7,11 @@ class Server
     protected $event;
     protected $prevData = '{}';
 
-    public function __construct(Event $event)
+    public function __construct()
     {
+        //$this->event = $event;
+    }
+    public function setEvent($event) {
         $this->event = $event;
     }
     public function sendEvent()
