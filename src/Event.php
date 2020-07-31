@@ -44,13 +44,9 @@ class Event
             $eventType[] = sprintf('event: %s', $this->eventType);
         }
         if ($this->dataContent !== '') {
-            $eventType[] = sprintf('data: %s', $this->dataContent);
+            $eventType[] = sprintf('data: %s', $this->dataContent[0]);
         }
         return implode("\n", $eventType) . "\n\n";
-    }
-    public function asArray()
-    {
-        return array('id' => $this->id, 'event' => $this->eventType, 'data' => $this->dataContent);
     }
     public function executeStopMethod()
     {

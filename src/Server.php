@@ -21,7 +21,7 @@ class Server
             flush();
         }
 
-        $prevData = $data->dataContent;
+        $prevData = $data->dataContent[1];
     }
     public function startServer($interval = 5)
     {
