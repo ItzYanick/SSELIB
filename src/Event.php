@@ -14,11 +14,11 @@ class Event {
         $this->callbackVar = $callbackVar;
         $this->stopMethod = $stopMethod;
     }
-    public function getDataContent() {
+    public function getDataContent($oldData) {
         if (isset($this->callbackVar)) {
-            $returnValue = call_user_func($this->callbackFunction, $this->callbackVar);
+            $returnValue = call_user_func_array($this->callbackFunction, array($this->callbackVar, $oldData));
         } else {
-            $returnValue = call_user_func($this->callbackFunction);
+            $returnValue = call_user_func($this->callbackFunction, $oldData);
         }
         if ($returnValue === false) {
             $this->id = '';
