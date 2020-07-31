@@ -28,14 +28,21 @@ header('Cache-Control: no-cache');
 header('Connection: keep-alive');
 header('X-Accel-Buffering: no'); // optional
 
-$callback = function () {
+$dataCallback = function ($var, $prevData) {
     $push = ['content' => 'Fools'];
     if (empty($push)) {
         return false;
     }
-    return json_encode(compact('push'));
+    return [json_encode(compact('push')), json_encode(compact('push'))];
 };
-(new SSE(new Event($callback, 'data')))->start(5);
+
+$abortCallback = function () {
+
+};
+
+$server = new Server();
+$server->setEvent(new Event($dataCallback, 'data', 'var', $abortCallback));
+$server->startServer(0);
 ```
 
 ## License
