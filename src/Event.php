@@ -1,6 +1,9 @@
 <?php
+
 namespace ItzYanick\SSELIB;
-class Event {
+
+class Event
+{
     protected $id;
     protected $eventType;
     protected $dataContent;
@@ -8,13 +11,15 @@ class Event {
     protected $callbackVar;
     protected $stopMethod;
 
-    public function __construct(callable $callbackFunction, $eventType, $callbackVar, callable $stopMethod) {
+    public function __construct(callable $callbackFunction, $eventType, $callbackVar, callable $stopMethod)
+    {
         $this->callbackFunction = $callbackFunction;
         $this->eventType = $eventType;
         $this->callbackVar = $callbackVar;
         $this->stopMethod = $stopMethod;
     }
-    public function getDataContent($oldData) {
+    public function getDataContent($oldData)
+    {
         if (isset($this->callbackVar)) {
             $returnValue = call_user_func_array($this->callbackFunction, array($this->callbackVar, $oldData));
         } else {
@@ -29,7 +34,8 @@ class Event {
         }
         return $this;
     }
-    public function __toString() {
+    public function __toString()
+    {
         $eventType = [];
         if ($this->id !== '') {
             $eventType[] = sprintf('id: %s', $this->id);
@@ -42,7 +48,12 @@ class Event {
         }
         return implode("\n", $eventType) . "\n\n";
     }
-    public function executeStopMethod() {
+    public function asArray()
+    {
+        return array('id' => $this->id, 'event' => $this->eventType, 'data' => $this->dataContent);
+    }
+    public function executeStopMethod()
+    {
         call_user_func($this->stopMethod);
     }
 }
