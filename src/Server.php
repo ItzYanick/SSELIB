@@ -9,11 +9,12 @@ class Server {
     }
     public function sendEvent() {
         $data = $this->event->getDataContent($this->prevData);
-        if($data['id'] !== '') {
-            echo $data;
-            ob_flush();
-            flush();
-        }
+        
+        //TODO CHECK IF FULL
+        echo $data;
+        ob_flush();
+        flush();
+        
         $prevData = $data;
     }
     public function startServer($interval = 5) {
