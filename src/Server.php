@@ -2,16 +2,19 @@
 namespace ItzYanick\SSELIB;
 class Server {
     protected $event;
+    protected $prevData = '{}';
+
     public function __construct(Event $event) {
         $this->event = $event;
     }
     public function sendEvent() {
-        $data = $this->event->getDataContent();
+        $data = $this->event->getDataContent($this->prevData);
         if($data['id'] !== '') {
             echo $data;
             ob_flush();
             flush();
         }
+        $prevData = $data;
     }
     public function startServer($interval = 5) {
         while (true) {
