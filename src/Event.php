@@ -4,9 +4,9 @@ namespace ItzYanick\SSELIB;
 
 class Event
 {
-    protected $id;
+    public $id;
     protected $eventType;
-    protected $dataContent;
+    public $dataContent;
     protected $callbackFunction;
     protected $callbackVar;
     protected $stopMethod;

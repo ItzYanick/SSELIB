@@ -15,13 +15,13 @@ class Server
     {
         $data = $this->event->getDataContent($this->prevData);
 
-        if ($data->asArray['id'] != '') {
+        if ($data->id != '') {
             echo $data;
             ob_flush();
             flush();
         }
 
-        $prevData = $data->asArray['data'];
+        $prevData = $data->dataContent;
     }
     public function startServer($interval = 5)
     {
